@@ -1,0 +1,19 @@
+<template>
+    
+    <lightning-layout multiple-rows="true" class="background" >
+        <lightning-layout-item size="12" padding="around-medium" class="slds-box">
+            
+            <lightning-formatted-text value="This is parent component" ></lightning-formatted-text>
+            <br />
+            <lightning-formatted-text value={data} ></lightning-formatted-text> <br /> <br />
+            
+
+            <lightning-input type="text" onchange={handleDataChange} label="Put data to manage child (Parent to child communication using methods)" ></lightning-input>
+        </lightning-layout-item>
+
+        <lightning-layout-item size="12" padding="around-medium" class="slds-box">
+            <lightning-formatted-text value="This is Child component" ></lightning-formatted-text>
+            <c-child-cmp onciickcstm={handleOnclick} ></c-child-cmp>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

@@ -1,0 +1,78 @@
+<!-- This Component Loads a record information from backend using LDS and shows data on the page-->
+<template>
+    
+    <lightning-card title={pageTitle} >
+        <lightning-layout multiple-rows="true" class="background">
+
+            <!-- Showing  use of objectAPIName recordId and property exposed to app builder-->
+            <lightning-layout-item size="12" padding="around-small">
+                <div>This is record Id : <strong>{recordId}</strong></div>
+                <div>This is Sobject Name : <strong>{objectApiName}</strong></div>
+            </lightning-layout-item>
+                
+            <!-- Showing How a user can get data using LDS -->
+            <lightning-layout-item size="12" padding="around-small">
+                <template if:true={accountRecord} >
+                        <lightning-layout multiple-rows="true" class="slds-box" >
+                            <lightning-layout-item size="3">
+                                Name : {accountRecord.Name.value}
+                            </lightning-layout-item>
+                            <lightning-layout-item size="3">
+                                Type : {accountRecord.Type.value}
+                            </lightning-layout-item>
+        
+                            <lightning-layout-item size="3">
+                                Industry :  {accountRecord.Industry.value}
+                            </lightning-layout-item>
+            
+                        </lightning-layout>
+                </template>
+            </lightning-layout-item>
+                
+            <!-- Showing Getting data on demand or performing an action on demand -->
+            <lightning-layout-item size="12" padding="around-small" >
+                <lightning-button variant="brand" label="Get Contact Data On Demand" onclick={getContacts}> </lightning-button>
+                <ul>
+                    <template if:true={childRecords}>
+                        <template for:each={childRecords} for:item="contact" for:index="i">
+                            <li key={contact.Id} >
+                                {i} . {contact.Name}
+                            </li>
+                        </template>
+                    </template>
+                </ul>
+                <template if:false={childRecords}>
+                    <div>Record Not Loaded try clicking on the above button</div>
+                </template>
+            </lightning-layout-item>
+
+        <!-- Wiring up a server side action to get data if available,
+            wired methods run automatically on parameter change-->       
+            
+            <lightning-layout-item size="12" padding="around-small">
+                <lightning-layout multiple-rows="true" >
+
+                    <lightning-layout-item size="12" padding="around-small">
+                        <lightning-input type="text" 
+                                        value={searchKey} 
+                                        label="Search Related Contacts"
+                                        onchange={handleSearchKeyChange} > </lightning-input>
+
+                    </lightning-layout-item>
+
+                    <lightning-layout-item size="12" padding="around-small" >
+                        <template if:true={contactSearchResult}>
+                            <ul>
+                                <template for:each={contactSearchResult} for:item="contact" for:index="i">
+                                    <li key={contact.Id}>
+                                        {i} . {contact.Name}
+                                    </li>
+                                </template>
+                            </ul>
+                        </template>
+                    </lightning-layout-item>
+                </lightning-layout>
+                </lightning-layout-item>  
+        </lightning-layout>
+        </lightning-card>
+</template>

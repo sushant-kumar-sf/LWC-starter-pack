@@ -1,0 +1,55 @@
+<!-- This component will demonstrate different ways to create record using LWC -->
+<template>
+    
+    <lightning-layout multiple-rows="true" class="background">
+        <!-- Using recordUiApi-->
+        <lightning-layout-item size="12" padding="around-small">
+            <b class="title" >
+                Quick Contact (Using 'lightning/uiRecordApi')
+            </b>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-input type="text" label="First Name" name="FirstName" onblur={handleValueChange} ></lightning-input>
+            <lightning-input type="text" label="Last Name" name="LastName" onblur={handleValueChange} ></lightning-input>
+            
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small">
+                <lightning-button variant="brand" onclick={createContact} label="Create Contact" ></lightning-button>
+        </lightning-layout-item>
+    
+
+        <lightning-layout-item size="12" padding="around-small">
+            <b class="title" >
+                Quick Contact (Using 'lightning-record-edit-form')
+            </b>
+        </lightning-layout-item>
+    
+        <lightning-layout-item size="12" padding="around-small" >
+            <lightning-record-edit-form 
+                object-api-name="Contact"
+                onsubmit={handleCustmSubmit}
+                onsuccess={handleSuccess}>
+                <lightning-messages>
+                </lightning-messages>
+                <lightning-input-field field-name="AccountId" value={recordId} ></lightning-input-field>
+                <lightning-input-field field-name="FirstName" ></lightning-input-field>
+                <lightning-input-field field-name="LastName" ></lightning-input-field>
+
+                <div class="slds-m-top_small">
+                    <lightning-button
+                        type="reset"
+                        label="Cancel"
+                        class="slds-m-right_small" ></lightning-button>
+    
+    
+                    <lightning-button 
+                        type="submit" 
+                        label="Create Contact"
+                        variant="brand" ></lightning-button>
+                </div>
+                
+            </lightning-record-edit-form>
+        </lightning-layout-item>
+    
+    </lightning-layout>
+</template>

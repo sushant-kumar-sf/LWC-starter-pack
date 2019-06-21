@@ -1,0 +1,14 @@
+<template>
+    
+    <lightning-layout multiple-rows="true" class="slds-box" >
+        <lightning-layout-item size="12">
+            <b>{name}</b>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <span>Message from sister : {sisterMessage}</span>
+        </lightning-layout-item>
+        <lightning-layout-item size="12">
+            <lightning-input type="text" label="Enter message for sister" onchange={postBrotherMessage} ></lightning-input>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

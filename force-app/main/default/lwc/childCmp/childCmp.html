@@ -1,0 +1,8 @@
+<!-- this component will demonostrate child to parent communication 
+    and parent to child communication-->
+
+<template>
+    <lightning-formatted-text value={childTitle} ></lightning-formatted-text>
+    <lightning-input label="Enter Some Data(Parent to child using event)" onchange={handleDataChange} ></lightning-input>
+    <lightning-formatted-text value={parentControlledData} ></lightning-formatted-text>
+</template>

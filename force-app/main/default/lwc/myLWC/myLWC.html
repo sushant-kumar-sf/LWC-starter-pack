@@ -1,0 +1,16 @@
+
+<!-- This component is used for Aura co existence test-->
+<template>
+    
+    <lightning-layout multiple-rows="true" class="slds-box">
+        <lightning-layout-item size="12" padding="around-small">
+            <p>This is LWC</p>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <lightning-input type="text" label="Enter data here" onchange={handleDataChange}></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="12" padding="around-small">
+            <span>value from Aura : {auraInput}</span>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

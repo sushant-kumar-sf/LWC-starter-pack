@@ -1,0 +1,22 @@
+<aura:component>
+
+    <aura:attribute name="name" type="String" ></aura:attribute>
+    <aura:attribute name="message" type="String" />
+
+
+    <c:auraPubsub aura:id="pubsub" onready="{!c.handlePubsubReady}" />
+
+    <lightning:layout multipleRows="true" class="slds-box">
+        <lightning:layoutItem size="12" >
+            <b>{!v.name}</b>
+        </lightning:layoutItem>
+        <lightning:layoutItem size="12">
+            Message from brother {!v.message}
+        </lightning:layoutItem>
+
+        <lightning:layoutItem size="12">
+            <lightning:input type="text" label="Enter message for Brother" onchange="{!c.handleDataChange}" />
+        </lightning:layoutItem>
+
+    </lightning:layout>
+</aura:component>	

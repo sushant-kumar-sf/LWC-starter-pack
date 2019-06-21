@@ -1,0 +1,19 @@
+<!--This is My Aura component to LWC communication and vice versa -->
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="valueFromLWC" type="String" default="" />
+
+    <lightning:layout multipleRows="true" class="slds-box" >
+        <lightning:layoutItem size="12" padding="around-small" >
+            <p class="slds-p-around_small">Parent : Aura component, child : LWC</p>
+            <p>Value form LWC : {!v.valueFromLWC}</p>
+            <lightning:input type="text" 
+                label="Enter data to reflect in LWC child" 
+                onchange="{!c.handleDataChange}"/>
+        </lightning:layoutItem>
+        
+        <lightning:layoutItem size="12" padding="around-small" >
+                <c:myLWC onchange1="{!c.handleChange}" aura:id="lwcId"/>
+        </lightning:layoutItem>
+    </lightning:layout>
+    
+</aura:component>	

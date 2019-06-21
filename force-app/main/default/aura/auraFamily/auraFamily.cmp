@@ -1,0 +1,15 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+
+    <lightning:card title="Family: Aura container (Sister: Aura, Brother: LWC)">
+        <lightning:layout multipleRows="true">
+
+            <lightning:layoutItem size="4" padding="around-small" >
+                <c:auraSister name="Aura Sister" ></c:auraSister>
+            </lightning:layoutItem>
+            <lightning:layoutItem size="4" padding="around-small" >
+                <c:brother name="LWC Brother" ></c:brother>
+            </lightning:layoutItem>
+        </lightning:layout>
+        
+    </lightning:card>
+</aura:component>	

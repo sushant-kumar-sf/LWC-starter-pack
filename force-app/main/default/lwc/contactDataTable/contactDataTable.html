@@ -1,0 +1,73 @@
+<template>
+    
+    <lightning-layout multiple-rows="true" class="slds-is-relative background">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." ></lightning-spinner>
+        </template>
+        <lightning-layout-item size="12" padding="around-small">
+            
+            <table class="slds-table slds-table_cell-buffer slds-no-row-hover slds-table_bordered">
+                <thead>
+                    <tr class="slds-line-height_reset">
+                        <th>
+                            <div class="slds-truncate" title="Serial No">Serial No</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate" title="First Name">First Name</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate" title="Last Name">Last Name</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate" title="Email">Email</div>
+                        </th>
+                        <th>
+                            <div class="slds-truncate" title="Actions">Actions</div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={contacts} for:item="contact" for:index="i">
+                        <tr key={contact.Id} >
+                            <template if:false={contact.isEdit}>
+                                <td>{contact.serialNumber}</td>
+                                <td>{contact.FirstName}</td>
+                                <td>{contact.LastName}</td>
+                                <td>{contact.Email}</td>
+                                <td>
+                                    <lightning-button-icon variant="bare" icon-name="utility:edit" onclick={editRow} name={i}></lightning-button-icon>
+                                    <lightning-button-icon variant="bare" icon-name="utility:delete" onclick={deleteRow} name={i}  ></lightning-button-icon>
+                                    <template if:true={contact.isLastRow}>
+                                        <lightning-button-icon variant="bare" icon-name="utility:add" onclick={addRow} name={i} ></lightning-button-icon>
+                                    </template>
+                                </td>
+                            </template>
+                            <template if:true={contact.isEdit}>
+                                <td>{contact.serialNumber}</td>
+                                <td>
+                                    <lightning-input type="text" value={contact.FirstName} name={i} onblur={trackFirstName} variant="label-hidden" ></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input type="text" value={contact.LastName} name={i} onblur={trackLastName} variant="label-hidden" required ></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-input type="email" value={contact.Email} name={i} onblur={trackEmail} variant="label-hidden" ></lightning-input>
+                                </td>
+                                <td>
+                                    <lightning-button-icon variant="bare" icon-name="utility:save" onclick={saveRow} name={i} ></lightning-button-icon>
+                                    <lightning-button-icon variant="bare" icon-name="utility:delete" onclick={deleteRow} name={i} ></lightning-button-icon>
+                                    <template if:true={contact.isLastRow}>
+                                        <lightning-button-icon variant="bare" icon-name="utility:add" onclick={addRow} name={i} ></lightning-button-icon>
+                                    </template>
+                                </td>
+                            </template>
+                            
+                        </tr>
+                    </template>
+                    
+                </tbody>
+            </table>
+        </lightning-layout-item>
+    </lightning-layout>
+    
+</template>

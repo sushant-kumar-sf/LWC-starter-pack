@@ -1,5 +1,5 @@
 public class RecordDataCtrl {
-    
+    // This is the test comment
     @AuraEnabled
     public static List<Contact> getContacts(String recordId) {
 
